@@ -1,6 +1,5 @@
 /*
- * Copyright 2021 Quentin LEBASTARD <qlebastard@gmail.com>
- * Copyright 2021 Charly Delay <charly@codesink.dev> (@0xcharly)
+ * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,15 +17,20 @@
 
 #pragma once
 
-#include "config_common.h"
+/* Key matrix configuration. */
+#define MATRIX_ROW_PINS \
+    { F4, F7, C6, D4, B5 }
+#define MATRIX_COL_PINS \
+    { F6, F5, B6, D7, E6, B4 }
 
-/* Pointing device configuration. */
+/* Handedness. */
+#define MASTER_RIGHT
 
-// Enable use of pointing device on slave split.
-#define SPLIT_POINTING_ENABLE
+/* serial.c configuration (for split keyboard). */
+#define SOFT_SERIAL_PIN D2
 
-// Pointing device is on the right split.
-#define POINTING_DEVICE_RIGHT
+/* RGB settings. */
+#define RGB_DI_PIN D3
 
-// Limits the frequency that the sensor is polled for motion.
-#define POINTING_DEVICE_TASK_THROTTLE_MS 1
+/* PMW3360 settings. */
+#define PMW3360_CS_PIN F0
