@@ -18,32 +18,61 @@ Check out the [keyboard build guides](https://docs.bastardkb.com) for the Charyb
 
 ## Building the firmware
 
+You must specify the shield version when compiling/flashing the firmware. 
+
 ### Charybdis (4x6)
 
 The `default` keymap is inspired from the original [Dactyl Manuform](../../handwired/dactyl_manuform) layout.
 
+* For Elite-C v1 shield
+
 ```shell
-qmk compile -kb bastardkb/charybdis/4x6 -km default
+qmk compile -kb bastardkb/charybdis/4x6/1.x/elitec -km default
+```
+* For Elite-C v2 shield
+
+```shell
+qmk compile -kb bastardkb/charybdis/4x6/2.x/elitec -km default
 ```
 
 Check out the `via` layout if you're looking for VIA support:
 
+* For Elite-C v1 shield
 ```shell
-qmk compile -kb bastardkb/charybdis/4x6 -km via
+qmk compile -kb bastardkb/charybdis/4x6/1.x/elitec -km via
+```
+* For Elite-C v2 shield
+
+```shell
+qmk compile -kb bastardkb/charybdis/4x6/2.x/elitec -km via
 ```
 
 ### Charybdis (3x5)
 
 The `default` keymap is inspired from the original [Dactyl Manuform](../../handwired/dactyl_manuform) layout.
 
+* For Elite-C v1 shield
+
 ```shell
-qmk compile -kb bastardkb/charybdis/3x5 -km default
+qmk compile -kb bastardkb/charybdis/3x5/1.x/elitec -km default
+```
+* For Elite-C v2 shield
+
+```shell
+qmk compile -kb bastardkb/charybdis/3x5/2.x/elitec -km default
 ```
 
 Check out the `via` layout if you're looking for VIA support:
 
+* For Elite-C v1 shield
 ```shell
-qmk compile -kb bastardkb/charybdis/3x5 -km via
+qmk compile -kb bastardkb/charybdis/3x5/1.x/elitec -km via
+```
+
+* For Elite-C v2 shield
+
+```shell
+qmk compile -kb bastardkb/charybdis/3x5/2.x/elitec -km via
 ```
 
 ## Customizing the firmware
@@ -112,6 +141,20 @@ This behavior can be further customized with the following defines:
 ```c
 #define CHARYBDIS_MINIMUM_SNIPING_DPI 200
 #define CHARYBDIS_SNIPING_DPI_CONFIG_STEP 100
+```
+
+### Acceleration
+
+By default, the pointer's movements are linear. To enable acceleration, add the following define:
+
+```c
+#define CHARYBDIS_POINTER_ACCELERATION_ENABLE
+```
+
+The acceleration factor can be further tune _via_ the `CHARYBDIS_POINTER_ACCELERATION_FACTOR`:
+
+```c
+#define CHARYBDIS_POINTER_ACCELERATION_FACTOR 24
 ```
 
 ### Custom keycodes
