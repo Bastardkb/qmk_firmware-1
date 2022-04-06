@@ -72,7 +72,7 @@ Drag-scroll enables scrolling with the trackball. When drag-scroll is enabled, t
 
 Call `charybdis_set_pointer_dragscroll_enabled(bool enable)` to enable/disable drag-scroll.
 
-`charybdis_get_pointer_dragscroll_enabled()` returns whether sniping mode is currently enabled.
+`charybdis_get_pointer_dragscroll_enabled()` returns whether drag-scroll mode is currently enabled.
 
 To invert the horizontal scrolling direction, define `CHARYBDIS_DRAGSCROLL_REVERSE_X`:
 
