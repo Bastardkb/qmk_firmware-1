@@ -18,25 +18,25 @@
 
 #ifdef VIA_ENABLE
 /* VIA configuration. */
-#define DYNAMIC_KEYMAP_LAYER_COUNT 7
+#    define DYNAMIC_KEYMAP_LAYER_COUNT 7
 
-#ifdef VIAL_ENABLE
+#    ifdef VIAL_ENABLE
 /** Vial configuration. */
 
-#define VIAL_KEYBOARD_UID \
-  { 0x44, 0x9F, 0x26, 0x53, 0xD9, 0x7B, 0x72, 0x4F }
-#define VIAL_UNLOCK_COMBO_ROWS \
-  { 0, 4 }
-#define VIAL_UNLOCK_COMBO_COLS \
-  { 0, 0 }
+#        define VIAL_KEYBOARD_UID \
+            { 0x44, 0x9F, 0x26, 0x53, 0xD9, 0x7B, 0x72, 0x4F }
+#        define VIAL_UNLOCK_COMBO_ROWS \
+            { 0, 4 }
+#        define VIAL_UNLOCK_COMBO_COLS \
+            { 0, 0 }
 
 /** Disable unused vial features. */
 
 // In addition to RGB Matrix effects, VialRGB also provides direct LED control
 // with a script running on your computer.  Remove to reenable.
-#define VIALRGB_NO_DIRECT
-#endif  // VIAL_ENABLE
-#endif  // VIA_ENABLE
+#        define VIALRGB_NO_DIRECT
+#    endif // VIAL_ENABLE
+#endif     // VIA_ENABLE
 
 /* Disable unused features. */
 #define NO_ACTION_ONESHOT
@@ -49,8 +49,8 @@
  *
  * See docs.qmk.fm/using-qmk/software-features/tap_hold#tapping-term
  */
-#define TAPPING_TERM 200
-#endif  // TAPPING_TERM
+#    define TAPPING_TERM 200
+#endif // TAPPING_TERM
 
 /**
  * \brief Enable rapid switch from tap to hold.
@@ -101,36 +101,30 @@
 /* Charybdis-specific features. */
 
 #ifdef POINTING_DEVICE_ENABLE
-// Enable pointer acceleration, which increases the speed by ~2x for large
-// displacement, while maintaining 1x speed for slow movements.  See also:
-// - `CHARYBDIS_POINTER_ACCELERATION_FACTOR`
-#define CHARYBDIS_POINTER_ACCELERATION_ENABLE
-
 // Automatically enable the pointer layer when moving the trackball.  See also:
 // - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS`
 // - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
 // #define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#endif  // POINTING_DEVICE_ENABLE
+#endif // POINTING_DEVICE_ENABLE
 
 /* RGB Matrix. */
 
 #ifdef RGB_MATRIX_ENABLE
 // Limit maximum brightness to keep power consumption reasonable, and avoid
 // disconnects.
-#undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
-#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 64
+#    undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 64
 
 // Rainbow swirl as startup mode.
-#define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
-#define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
+#    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
+#    define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT
 
 // Slow swirl at startup.
-#define RGB_MATRIX_STARTUP_SPD 32
+#    define RGB_MATRIX_STARTUP_SPD 32
 
 // Startup values.
-#define RGB_MATRIX_STARTUP_HUE 0
-#define RGB_MATRIX_STARTUP_SAT 255
-#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
-#define RGB_MATRIX_STARTUP_HSV \
-  RGB_MATRIX_STARTUP_HUE, RGB_MATRIX_STARTUP_SAT, RGB_MATRIX_STARTUP_VAL
-#endif  // RGB_MATRIX_ENABLE
+#    define RGB_MATRIX_STARTUP_HUE 0
+#    define RGB_MATRIX_STARTUP_SAT 255
+#    define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_MATRIX_STARTUP_HSV RGB_MATRIX_STARTUP_HUE, RGB_MATRIX_STARTUP_SAT, RGB_MATRIX_STARTUP_VAL
+#endif // RGB_MATRIX_ENABLE
