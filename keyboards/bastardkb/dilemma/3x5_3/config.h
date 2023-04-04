@@ -38,6 +38,10 @@
 #define CRC8_USE_TABLE
 #define CRC8_OPTIMIZE_SPEED
 
+/* Encoders. */
+#define ENCODERS_PAD_A { GP25 }
+#define ENCODERS_PAD_B { GP24 }
+
 /* Cirque trackpad over SPI. */
 #define SPI_SCK_PIN GP22
 #define SPI_MOSI_PIN GP23
@@ -54,6 +58,10 @@
 /* Reset. */
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET_LED GP17
+
+/* Bootmagic. */
+#define BOOTMAGIC_LITE_ROW_RIGHT 4
+#define BOOTMAGIC_LITE_COLUMN_RIGHT 0
 
 /* RGB settings. */
 #define RGBLED_NUM 72
