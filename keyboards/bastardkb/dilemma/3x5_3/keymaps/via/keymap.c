@@ -1,5 +1,6 @@
 /**
  * Copyright 2022 Charly Delay <charly@codesink.dev> (@0xcharly)
+ * Copyright 2023 casuanoob <casuanoob@hotmail.com> (@casuanoob)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-
-#ifdef DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#    include "timer.h"
-#endif // DILEMMA_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
 enum dilemma_keymap_layers {
     LAYER_BASE = 0,
@@ -51,7 +48,7 @@ enum dilemma_keymap_layers {
        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
        KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT, \
        KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, \
-                         KC_A, TAB_FUN, SPC_NAV, ENT_SYM, BSP_NUM,    KC_B
+                      CW_TOGG, TAB_FUN, SPC_NAV, ENT_SYM, BSP_NUM, KC_MUTE
 
 /** Convenience row shorthands. */
 #define _______________DEAD_HALF_ROW_______________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
@@ -195,12 +192,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 #    endif  // DILEMMA_AUTO_SNIPING_ON_LAYER
-
-#   ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
-void pointing_device_init_user(void) {
-    set_auto_mouse_enable(true);         // always required before the auto mouse feature will work
-}
-#   endif   //POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #endif      // POINTING_DEVICE_ENABLE
 
 #if defined(ENCODER_MAP_ENABLE)
@@ -210,6 +201,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [LAYER_NAVIGATION]  =   { ENCODER_CCW_CW(KC_PGUP, KC_PGDN),     ENCODER_CCW_CW(KC_VOLU, KC_VOLD)  },
     [LAYER_POINTER]     =   { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),     ENCODER_CCW_CW(RGB_SAD, RGB_SAI)  },
     [LAYER_NUMERAL]     =   { ENCODER_CCW_CW(RGB_VAD, RGB_VAI),     ENCODER_CCW_CW(RGB_SPD, RGB_SPI)  },
-    [LAYER_SYMBOLS]     =   { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),    ENCODER_CCW_CW(KC_RGHT, KC_LEFT) },
+    [LAYER_SYMBOLS]     =   { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),    ENCODER_CCW_CW(KC_RGHT, KC_LEFT)  },
 };
 #endif

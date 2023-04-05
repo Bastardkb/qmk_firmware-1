@@ -29,7 +29,5 @@ POINTING_DEVICE_DRIVER = cirque_pinnacle_spi
 
 SPLIT_KEYBOARD = yes
 
-DEBOUNCE_TYPE = asym_eager_defer_pk
-
 # RP2040-specific options
 PICO_INTRINSICS_ENABLED = no # ATM Unsupported by ChibiOS.

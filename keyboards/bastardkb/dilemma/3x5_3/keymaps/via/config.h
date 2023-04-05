@@ -1,5 +1,6 @@
 /**
  * Copyright 2021 Charly Delay <charly@codesink.dev> (@0xcharly)
+ * Copyright 2023 casuanoob <casuanoob@hotmail.com> (@casuanoob)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,11 +33,3 @@
  *   Mod(a)🠗 e🠗 Mod(a)🠕 e🠕 ➞ ae
  */
 #define IGNORE_MOD_TAP_INTERRUPT
-
-/* Charybdis-specific features. */
-
-#ifdef POINTING_DEVICE_ENABLE
-// Automatically enable the pointer layer when moving the trackpad.
-//#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-//#define AUTO_MOUSE_DEFAULT_LAYER 3
-#endif // POINTING_DEVICE_ENABLE
