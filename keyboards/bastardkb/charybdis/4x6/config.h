@@ -29,3 +29,7 @@
 #    define RGB_MATRIX_SPLIT \
         { 29, 29 }
 #endif
+
+/* Boot magic. */
+#define BOOTMAGIC_LITE_ROW_RIGHT 5
+#define BOOTMAGIC_LITE_COLUMN_RIGHT 0
