@@ -124,12 +124,31 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
     uint8_t layer = get_highest_layer(layer_state);
     if (layer > LAYER_BASE) {
-        HSV hsv = {0, 255, 255};
-        hsv.h = 255 * ((float) layer / DYNAMIC_KEYMAP_LAYER_COUNT);
-        if (hsv.v > rgb_matrix_get_val()) {
-            hsv.v = RGB_MATRIX_MAXIMUM_BRIGHTNESS;
-        }
-        RGB rgb = hsv_to_rgb(hsv);
+        RGB rgb;
+        switch (get_highest_layer(layer_state)) {
+            case LAYER_LOWER:
+                rgb = (RGB){RGB_BLUE};
+                break;
+            case LAYER_RAISE:
+                rgb = (RGB){RGB_CORAL};
+                break;
+            case LAYER_POINTER:
+                rgb = (RGB){RGB_GREEN};
+                break;
+            case 4:
+                rgb = (RGB){RGB_YELLOW};
+                break;
+            case 5:
+                rgb = (RGB){RGB_PINK};
+                break;
+            case 6:
+                rgb = (RGB){RGB_MAGENTA};
+                break;
+            case 7:
+            default:
+                rgb = (RGB){RGB_RED};
+                break;
+        };
 
         for (int i = led_min; i <= led_max; i++) {
             if ( g_led_config.flags[i] & LED_FLAG_UNDERGLOW) {
