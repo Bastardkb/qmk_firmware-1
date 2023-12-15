@@ -33,7 +33,7 @@
         "mousekey": true,
         "nkro": true,
         "rgb_matrix": true,
-        "caps_word": true
+        "caps_word": true,
         "tri_layer": true
     },
     "ws2812": {
