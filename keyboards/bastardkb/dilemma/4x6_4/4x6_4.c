@@ -72,7 +72,6 @@ HSV _get_hsv_for_layer_index(uint8_t layer) {
             return (HSV){HSV_TEAL};
         case 6:
             return (HSV){HSV_PURPLE};
-        case 7:
         default:
             return (HSV){HSV_RED};
     };
@@ -83,6 +82,7 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     if (!rgb_matrix_indicators_advanced_user(led_min, led_max)) {
         return false;
     }
+    // Set indicator LEDs to red if caps lock is enabled
     if (host_keyboard_led_state().caps_lock) {
         for (int i = led_min; i <= led_max; i++) {
             if (HAS_FLAGS(g_led_config.flags[i], LED_FLAG_MODIFIER)) {
@@ -92,7 +92,8 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
         }
     }
 
-    uint8_t layer = get_highest_layer(layer_state);
+    // Set underglow to a solid color for highest active layer apart from the base layer.
+    const uint8_t layer = get_highest_layer(layer_state);
     if (layer > 0) {
         HSV hsv = _get_hsv_for_layer_index(layer);
 
