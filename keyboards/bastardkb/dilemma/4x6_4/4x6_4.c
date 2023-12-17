@@ -20,6 +20,14 @@
 
 #include "quantum.h"
 
+#ifndef LAYER_INDICATOR_BRIGHTNESS_INC
+#  define LAYER_INDICATOR_BRIGHTNESS_INC 22
+#endif
+
+#ifndef CAPSLOCK_INDICATOR_BRIGHTNESS_INC
+#  define CAPSLOCK_INDICATOR_BRIGHTNESS_INC 76
+#endif
+
 #ifdef SWAP_HANDS_ENABLE
 const keypos_t PROGMEM hand_swap_config[MATRIX_ROWS][MATRIX_COLS] = {
     /* Left hand, matrix positions */
@@ -86,8 +94,8 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
         for (int i = led_min; i <= led_max; i++) {
             if (HAS_FLAGS(g_led_config.flags[i], LED_FLAG_MODIFIER)) {
-                // set modifier-flagged LEDs to a pure red 76 steps brighter than the current brightness, clamped to 255 (ie. uint8_t max value).
-                rgb_matrix_set_color(i, MIN(rgb_matrix_get_val() + 76, 255), 0, 0);
+                // set modifier-flagged LEDs to a pure a configured interval brighter than the current brightness, clamped to 255 (ie. uint8_t max value).
+                rgb_matrix_set_color(i, MIN(rgb_matrix_get_val() + CAPSLOCK_INDICATOR_BRIGHTNESS_INC, 255), 0, 0);
             }
         }
     }
@@ -98,8 +106,8 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
         HSV hsv = _get_hsv_for_layer_index(layer);
 
         if (hsv.v > rgb_matrix_get_val()) {
-            // Set brightness slightly (22 steps) brighter than current brightness, clamped to 255 (ie. uint8_t max value)
-            hsv.v = MIN(rgb_matrix_get_val() + 22, 255);
+            // Set brightness to the configured interval brighter than current brightness, clamped to 255 (ie. uint8_t max value). This compensates for the dimmer appearance of the underglow LEDs.
+            hsv.v = MIN(rgb_matrix_get_val() + LAYER_INDICATOR_BRIGHTNESS_INC, 255);
         }
         const RGB rgb = hsv_to_rgb(hsv);
 
