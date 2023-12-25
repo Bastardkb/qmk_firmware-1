@@ -66,7 +66,7 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 #endif // ENCODER_ENABLE
 
 #ifdef RGB_MATRIX_ENABLE
-HSV _get_hsv_for_layer_index(uint8_t layer) {
+static HSV _get_hsv_for_layer_index(uint8_t layer) {
     switch (layer) {
         case 1:
             return (HSV){HSV_BLUE};
