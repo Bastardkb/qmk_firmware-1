@@ -101,7 +101,7 @@ To build a firmware, use the `bkb-master` branch:
 
 ```shell
 git checkout origin/bkb-master
-qmk compile -c -kb {keyboard-arg} -km {keymap}
+qmk compile -c -kb bastardkb/{keyboard-arg} -km {keymap}
 ```
 
 See [the `{keyboard-arg}` section](#keyboard-arg) for possible values.
