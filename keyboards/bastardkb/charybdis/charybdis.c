@@ -196,10 +196,16 @@ static void pointing_device_task_charybdis(report_mouse_t* mouse_report) {
         } else {
             scroll_buffer_x += m_x;
         }
-        if (abs(scroll_buffer_x) >= CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
+        const int16_t abs_x = abs(scroll_buffer_x);
+        if (abs_x >= CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
             const int16_t sign_x = scroll_buffer_x > 0 ? 1 : -1;
-            mouse_report->h      = sign_x;
-            scroll_buffer_x -= sign_x * CHARYBDIS_DRAGSCROLL_BUFFER_SIZE; // Spill-over
+#    ifdef CHARYBDIS_DRAGSCROLL_SEND_COALESCED
+            mouse_report->h = sign_x * (abs_x / CHARYBDIS_DRAGSCROLL_BUFFER_SIZE);
+            scroll_buffer_x = sign_x * (abs_x % CHARYBDIS_DRAGSCROLL_BUFFER_SIZE);
+#    else
+            mouse_report->h = sign_x;
+            scroll_buffer_x -= sign_x * CHARYBDIS_DRAGSCROLL_BUFFER_SIZE;
+#    endif // CHARYBDIS_DRAGSCROLL_SEND_COALESCED
         }
 
 #    ifdef CHARYBDIS_DRAGSCROLL_REVERSE_Y
@@ -213,10 +219,16 @@ static void pointing_device_task_charybdis(report_mouse_t* mouse_report) {
         } else {
             scroll_buffer_y += m_y;
         }
-        if (abs(scroll_buffer_y) >= CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
+        const int16_t abs_y = abs(scroll_buffer_y);
+        if (abs_y >= CHARYBDIS_DRAGSCROLL_BUFFER_SIZE) {
             const int16_t sign_y = scroll_buffer_y > 0 ? 1 : -1;
-            mouse_report->v      = sign_y;
-            scroll_buffer_y -= sign_y * CHARYBDIS_DRAGSCROLL_BUFFER_SIZE; // Spill-over
+#    ifdef CHARYBDIS_DRAGSCROLL_SEND_COALESCED
+            mouse_report->v = sign_y * (abs_y / CHARYBDIS_DRAGSCROLL_BUFFER_SIZE);
+            scroll_buffer_y = sign_y * (abs_y % CHARYBDIS_DRAGSCROLL_BUFFER_SIZE);
+#    else
+            mouse_report->v = sign_y;
+            scroll_buffer_y -= sign_y * CHARYBDIS_DRAGSCROLL_BUFFER_SIZE;
+#    endif // CHARYBDIS_DRAGSCROLL_SEND_COALESCED
         }
 
         mouse_report->x = mouse_report->y = 0;

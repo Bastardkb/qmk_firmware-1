@@ -86,8 +86,15 @@ To invert the vertical scrolling direction (_ie._ mimic macOS "natural" scroll d
 ```c
 #define CHARYBDIS_DRAGSCROLL_REVERSE_Y
 ```
-
 This only affects the vertical scroll direction.
+
+
+By default, accumulated drag-scroll ±1 events from fast moves are queued and send through even after "wheel" has stopped moving.  To send scroll-wheel events with values greater than ±1,
+define `CHARYBDIS_DRAGSCROLL_SEND_COALESCED`:
+
+```c
+#define CHARYBDIS_DRAGSCROLL_SEND_COALESCED
+```
 
 ### Sniping mode
 
