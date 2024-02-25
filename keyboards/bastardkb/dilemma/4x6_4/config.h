@@ -52,3 +52,6 @@
 // Startup values.
 #define RGB_MATRIX_DEFAULT_VAL 64
 #define RGB_MATRIX_DEFAULT_SPD 32
+
+// Reduce soft serial speed: Work around rp2040 issues
+#define SELECT_SOFT_SERIAL_SPEED 4

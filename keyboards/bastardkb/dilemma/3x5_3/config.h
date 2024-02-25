@@ -120,3 +120,6 @@
 #    define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #    define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
+
+// Reduce soft serial speed: Work around rp2040 issues
+#define SELECT_SOFT_SERIAL_SPEED 4
